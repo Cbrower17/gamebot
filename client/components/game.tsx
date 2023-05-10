@@ -12,7 +12,7 @@ export default function Game() {
   });
  
   return (
-    <div>
+    <div className="flex items-center justify-center p-20">
       {isMounted && <Unity unityProvider={unityProvider} style={{
       width: '60vw',
       

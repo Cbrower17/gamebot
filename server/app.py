@@ -33,7 +33,7 @@ class Users(Resource):
         try:
             input = request.get_json()
             new_user = User(
-                name=input['name'], email=input['email'], password_hash=input['password'], profile_picture = input['profile_picture'], user_name = input['username'])
+                email=input['email'], password_hash=input['password'], profile_picture = input['profile_picture'], username = input['username'])
             db.session.add(new_user)
             db.session.commit()
             return make_response(new_user.to_dict(), 201)

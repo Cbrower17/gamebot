@@ -69,15 +69,15 @@ export default function Home({currUser,setcurrUser, loggedIn}) {
   }
 
 
-  function handleSubmitnewuser(e) {
+  function handleSubmitNewUser(e) {
     console.log("submitting...")
     e.preventDefault();
     const data = {
       
-      "password": newpassword,
-      "email": email,
       "username":newusername,
+      "password": newpassword,
       "profile_picture":profilePicture,
+      "email": email,
 
     }
     
@@ -142,23 +142,7 @@ export default function Home({currUser,setcurrUser, loggedIn}) {
 
       <Link as = {`user/${'test'}`} href="/user/[something]">Link</Link>
       <button onClick={handleLogout}>logout </button>
-      {/* <form onSubmit={handleSubmitlogin}>
-        <p>Username</p>
-        <input
-        className="input input-bordered w-full max-w-xs"
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <p>password</p>
-        <input
-        className="input input-bordered w-full max-w-xs"
-          type="text"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit">Login</button>
-      </form> */}
+      
 <div
       className="bg-cover bg-center min-h-screen flex items-center justify-center"
       style={{ backgroundImage: `../public/logo-no-background.png` }}
@@ -189,45 +173,53 @@ export default function Home({currUser,setcurrUser, loggedIn}) {
       </form>
       <button onClick={handleLogout} className="mt-4 btn btn-secondary">Logout</button>
     </div>
+    <div className="max-w-md mx-auto bg-white shadow-md rounded-md p-6">
+      <form onSubmit={handleSubmitNewUser}>
+        <div className="mb-4">
+          <label htmlFor="newusername" className="block text-sm font-medium text-gray-700">Username</label>
+          <input
+            id="newusername"
+            className="input input-bordered w-full max-w-xs"
+            type="text"
+            value={newusername}
+            onChange={(e) => setNewUsername(e.target.value)}
+          />
         </div>
-      <form onSubmit={handleSubmitnewuser}>
-        <p>Username</p>
-        <input
-        className="input input-bordered w-full max-w-xs"
-        type="text"
-        value={newusername}
-          onChange={(e) => setNewUsername(e.target.value)}
-        />
-        <p>Name</p>
-        <input
-        className="input input-bordered w-full max-w-xs"
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <p>email</p>
-        <input
-        className="input input-bordered w-full max-w-xs"
-          type="text"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <p>password</p>
-        <input
-        className="input input-bordered w-full max-w-xs"
-          type="text"
-          value={newpassword}
-          onChange={(e) => setNewPassword(e.target.value)}
-        />
-        <p>Profile Picture URL</p>
-        <input
-        className="input input-bordered w-full max-w-xs"
-          type="text"
-          value={profilePicture}
-          onChange={(e) => setProfilePicture(e.target.value)}
-        />
-        <button type="submit">Create Account</button>
+        <div className="mb-4">
+          <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+          <input
+            id="email"
+            className="input input-bordered w-full max-w-xs"
+            type="text"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="newpassword" className="block text-sm font-medium text-gray-700">Password</label>
+          <input
+            id="newpassword"
+            className="input input-bordered w-full max-w-xs"
+            type="password"
+            value={newpassword}
+            onChange={(e) => setNewPassword(e.target.value)}
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="profilePicture" className="block text-sm font-medium text-gray-700">Profile Picture URL</label>
+          <input
+            id="profilePicture"
+            className="input input-bordered w-full max-w-xs"
+            type="text"
+            value={profilePicture}
+            onChange={(e) => setProfilePicture(e.target.value)}
+          />
+        </div>
+        <button type="submit" className="btn btn-primary">Create Account</button>
       </form>
+    </div>
+        </div>
+      
       
       </>
     )

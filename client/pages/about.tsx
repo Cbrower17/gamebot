@@ -6,8 +6,6 @@ import { useRouter } from "next/router";
 import { Unity, useUnityContext } from "react-unity-webgl";
 import Game from "@/components/game";
 import { Navbar, TextInput } from "flowbite-react";
-import Comment from "@/components/comment";
-import CommentSection from "@/components/commentSection";
 import NavigationBar from "@/components/navigationBar";
 
 
@@ -24,7 +22,7 @@ export async function getServerSideProps() {
   };
 }
 
-export default function Home({ comments, setcurrUser, currUser }) {
+export default function index({ comments, setcurrUser, currUser }) {
   const router = useRouter();
   console.log(currUser);
 
@@ -39,23 +37,12 @@ export default function Home({ comments, setcurrUser, currUser }) {
     setcurrUser(null);
     router.push("/");
   }
-  if (router.isFallback || currUser=== undefined) {
+  if (router.isFallback) {
     return <div>loading</div>;
   }
   return (
     <>
-     
-<NavigationBar />
-<div className="flex  content-center h-screen  border-black">
-  <div className="container mx-auto">
-  <div>Welcome home, {} </div>
-      <button onClick={handleLogout}>logout </button>
-      {/* <Game /> */}
-      
-      
-      <CommentSection comments = {comments} activeUser = {currUser}/>
-  </div>
-</div>
+     <NavigationBar />
 
       
     </>

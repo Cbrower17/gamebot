@@ -18,8 +18,8 @@ class User(db.Model, SerializerMixin):
     comments = db.relationship( 'Comment', backref = 'user' )
     # highscores
     scores = db.relationship( 'Score', backref = 'user' )
-
     serialize_rules = ('comments.user', 'scores.user')
+    
     @hybrid_property
     def password_hash(self):
         return self._password_hash

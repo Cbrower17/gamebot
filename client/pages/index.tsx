@@ -5,6 +5,7 @@ import styles from '@/styles/Home.module.css'
 import {useEffect,useState} from 'react'
 import Link from 'next/link'
 import { Router, useRouter } from 'next/router'
+import { Unity, useUnityContext } from "react-unity-webgl";
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -21,6 +22,8 @@ export default function Home({currUser,setcurrUser, loggedIn}) {
   const [profilePicture, setProfilePicture] = useState("");
   const [display, setDisplay] = useState("Hello")
   const [num, setNum] = useState(0)
+
+  
   
   console.log(currUser,loggedIn)
   if(currUser){
@@ -132,9 +135,14 @@ export default function Home({currUser,setcurrUser, loggedIn}) {
     
     return (
       <>
+
+      
+      
+
+
       <Link as = {`user/${'test'}`} href="/user/[something]">Link</Link>
       <button onClick={handleLogout}>logout </button>
-      <form onSubmit={handleSubmitlogin}>
+      {/* <form onSubmit={handleSubmitlogin}>
         <p>Username</p>
         <input
         className="input input-bordered w-full max-w-xs"
@@ -150,13 +158,44 @@ export default function Home({currUser,setcurrUser, loggedIn}) {
           onChange={(e) => setPassword(e.target.value)}
         />
         <button type="submit">Login</button>
+      </form> */}
+<div
+      className="bg-cover bg-center min-h-screen flex items-center justify-center"
+      style={{ backgroundImage: `../public/logo-no-background.png` }}
+    >
+      <div className="max-w-md mx-auto bg-white shadow-md rounded-md p-6">
+      <form onSubmit={handleSubmitlogin}>
+        <div className="mb-4">
+          <label htmlFor="username" className="block text-sm font-medium text-gray-700">Username</label>
+          <input
+            id="username"
+            className="input input-bordered w-full max-w-xs"
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
+          <input
+            id="password"
+            className="input input-bordered w-full max-w-xs"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            />
+        </div>
+        <button type="submit" className="btn btn-primary">Login</button>
       </form>
+      <button onClick={handleLogout} className="mt-4 btn btn-secondary">Logout</button>
+    </div>
+        </div>
       <form onSubmit={handleSubmitnewuser}>
         <p>Username</p>
         <input
         className="input input-bordered w-full max-w-xs"
-          type="text"
-          value={newusername}
+        type="text"
+        value={newusername}
           onChange={(e) => setNewUsername(e.target.value)}
         />
         <p>Name</p>
@@ -189,6 +228,7 @@ export default function Home({currUser,setcurrUser, loggedIn}) {
         />
         <button type="submit">Create Account</button>
       </form>
+      
       </>
     )
   }

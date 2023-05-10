@@ -1,6 +1,7 @@
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
 import {useEffect,useState} from 'react'
+// import { Unity, useUnityContext } from "react-unity-webgl";
 
 export default function App({ Component, pageProps }) {
   const [currUser, setcurrUser] = useState(null);
@@ -19,10 +20,12 @@ export default function App({ Component, pageProps }) {
     .then(data => setcurrUser(data))
   },[])
 
+  
+
 
   return (
     <>
-      <Component {...pageProps} currUser ={currUser} setcurrUser={setcurrUser} setloggedIn={setloggedIn} loggedIn={loggedIn}/>
+      <Component {...pageProps} currUser ={currUser} setcurrUser={setcurrUser} setloggedIn={setloggedIn} loggedIn={loggedIn} />
     </>
   )
 }
